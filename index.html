@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Startcode Solution</title>
+	<link rel="stylesheet" href="style.css" />
+	
+
+	
+
+</head>
+<body>
+
+	<header>
+		
+		<h1>STARTCODE SOLUTION</h1>
+			
+		<nav>
+			<ul>
+				<li><a href="#">Início</a></li>
+				<li><a href="#">Sobre</a></li>
+				<li><a href="#">Contato</a></li>
+			</ul>
+		</nav>
+		
+ 
+	</header>
+
+	<div class="container">
+	
+		<h2>Código do Software</h2>
+		<p>// Importa os módulos necessários
+		const express = require('express');
+		const mongoose = require('mongoose');
+		const bodyParser = require('body-parser');
+		
+		// Cria a conexão com o banco de dados MongoDB
+		mongoose.connect('mongodb://localhost:27017/crud', { useNewUrlParser: true, useUnifiedTopology: true });
+		
+		// Define o esquema do modelo de dados
+		const Schema = mongoose.Schema;
+		const userSchema = new Schema({
+			name: String,
+			email: String,
+			password: String
+		});
+		const User = mongoose.model('User', userSchema);
+		
+		// Cria o aplicativo Express.js
+		const app = express();
+		
+		// Configura o middleware de análise do corpo das solicitações
+		app.use(bodyParser.urlencoded({ extended: true }));
+		app.use(bodyParser.json());
+		
+		// Define as rotas do CRUD
+		app.get('/users', function(req, res) {
+			User.find(function(err, users) {
+				if (err) {
+					res.send(err);
+				} else {
+					res.json(users);
+				}
+			});
+		});
+		
+		app.get('/users/:id', function(req, res) {
+			User.findById(req.params.id, function(err, user) {
+				if (err) {
+					res.send(err);
+				} else {
+					res.json(user);
+				}
+			});
+		});
+		
+		app.post('/users', function(req, res) {
+			var user = new User(req.body);
+			user.save(function(err) {
+				if (err) {
+					res.send(err);
+				} else {
+					res.json(user);
+				}
+			});
+		});
+		
+		app.put('/users/:id', function(req, res) {
+			User.findByIdAndUpdate(req.params.id, req.body, function(err, user) {
+				if (err) {
+					res.send(err);
+				} else {
+					res.json(user);
+				}
+			});
+		});
+		
+		app.delete('/users/:id', function(req, res) {
+			User.findByIdAndDelete(req.params.id, function(err) {
+				if (err) {
+					res.send(err);
+				} else {
+					res.json({ message: 'Usuário excluído com sucesso!' });
+				}
+			});
+		});
+		
+		// Inicia o servidor
+		app.listen(3000, function() {
+			console.log('Servidor iniciado na porta 3000');
+		});
+		</p>
+		
+	</div>
+
+	<v class="container">
+		<h3>Descrição do Software</h3>
+		<p>Esse é um projeto simples de um CRUD construído em node.js. Escrito com códigos de alto desempenho e projeta utilizando padrões de projeto tais como MVC, visando uma engenharia de software adequada para escalar.
+		 </p>                      
+	
+
+
+	<div class="container">
+		<h3>Informações do Programador</h3>
+		<p>Óla, sou o Guilherme Alves!👋 <br> 
+			👨‍💻- Desenvolvedor Frontend e Backend <br>
+			👨🏻‍💼 -Empreendedor <br>
+			🚀-Apaixonado por criar, inovar e evoluir <br>
+       		
+	</div>
+</body>
+       <footer>
+	      <img src=img/logo2.png alt="Logo da minha empresa">
+	      <br>
+Copyright © 2019 StartCode Solution</footer>
+
+</html>
+
+
+	
+
+
+
+
+
+
+ 
