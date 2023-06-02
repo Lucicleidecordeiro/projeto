@@ -75,22 +75,52 @@ footer > img {
     margin-top: 25px;
 }
 
-
 nav ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    display: flex;
-}
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	background-color:linear-gradient(to bottom right, #011134, #255489);
+	text-align: right;
+	border-radius: 10px;
+	
 
-nav li {
-    margin-right: 20px;
-}
-
-nav a {
-    color: #fff;
-    text-decoration: none;
-}
+  }
+  
+  nav ul li {
+	display: inline-block;
+  }
+  
+  nav ul li a {
+	display: block;
+	padding: 10px 20px;
+	text-decoration: none;
+	color: #d8d8e0;
+  }
+  
+  nav ul li a:hover {
+	background-color: #3d0eac;
+	color: #f5f2f2;
+ }	
+ .submenu {
+	display: none;
+	position: absolute;
+	background-color: #f2f2f2;
+	padding: 0;
+	z-index: 1;
+  }
+  
+  .submenu li {
+	display: block;
+  }
+  
+  .submenu li a {
+	padding: 10px 54px;
+	color: #333;
+  }
+  
+  nav ul li:hover .submenu {
+	display: block;
+  }
 
 .container {
     display: flex;
